@@ -38,11 +38,6 @@ Full numbers and discussion: `docs/ADNN_Option1_Report.pdf`.
 
 Tested versions are pinned in `requirements.txt`.
 
-## Honest notes
-- The label check used two automated raters, not humans (see report, Limitations).
-- Labels come from simulator rules, not real user systems. ScienceWorld labels are less reliable (kappa about 0.5 against the check).
-- AI assistance (Claude) was used for code and drafting; see `docs/CONTRIBUTION_LOG.md`.
-
 ## Licences
 Code: MIT (see LICENSE). Data: synthetic or ScienceWorld-generated. Models keep their own licences
 (Qwen2.5: Apache-2.0, Llama 3.1: Llama 3.1 Community License). Verify before publishing.
