@@ -1,6 +1,6 @@
 # Do AI Agents Know Which Actions Cannot Be Undone?
 
-ADNN course project (Option 1), Mahindra University. Solo project.
+ADNN course project (Option 1)
 
 We test whether two open-weight LLMs (Qwen2.5-7B-Instruct, Llama-3.1-8B-Instruct) represent
 and use the difference between reversible, partially reversible and irreversible actions.
