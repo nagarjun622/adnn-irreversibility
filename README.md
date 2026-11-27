@@ -14,11 +14,17 @@ and use the difference between reversible, partially reversible and irreversible
 - Asked directly, the models are weak (3-class balanced accuracy 0.43 Qwen, 0.45 Llama).
 - Neither agent asked before an irreversible action (A = 0.00). Knowledge K: Qwen 0.833, Llama 0.258.
 
+## Additional experiments
+- **Bag-of-words on minimal-pair rows:** 0.348 balanced accuracy (macro-F1 0.289) vs 0.97 for the probe (`results/rq1_bow_minimal_pairs.csv`).
+- **Careful system prompt (Qwen, RQ3):** more cautious in general (0.42 in both versions) but not about irreversibility; sensitivity 0.00, A = 0.015, McNemar p = 1.0 (`results/rq3_prompt_ablation_qwen7b.csv`, `logs/rq3_episodes_qwen7b_careful.jsonl`).
+- **Qwen2.5-14B-Instruct (4-bit) probes:** same pattern, 0.963 at layer 44 vs 0.392 at layer 0 (`results/rq1_qwen14b_sweep.csv`).
+
 Full numbers and discussion: `docs/ADNN_Option1_Report.pdf`.
 
 ## Repository layout
 | Path | Content |
 |---|---|
+| `ADNN_Project.ipynb` | Colab notebook with all experiments and outputs |
 | `config.py`, `probe_utils.py` | seeds (SEED=42), model names, probe helpers |
 | `sandbox.py`, `sandbox_text.py` | text sandbox simulator and labelling rules |
 | `sw_labeller.py` | ScienceWorld action labelling |
@@ -33,7 +39,7 @@ Full numbers and discussion: `docs/ADNN_Option1_Report.pdf`.
 ## Reproduce
 1. Open the Colab notebook (GPU runtime, e.g. T4), mount Drive, `pip install -r requirements.txt`.
 2. Set your Hugging Face token as a Colab secret named `HF_TOKEN` (never commit it). Accept the Llama 3.1 licence on Hugging Face.
-3. Run the notebook cells in order. Each stage saves to Drive and skips work already done, so it can be resumed.
+3. Run the notebook cells in order. Hidden-state arrays (`.npy`) are large and not in the repo; the extraction cells regenerate them. Each stage saves to Drive and skips work already done, so it can be resumed.
 4. All seeds are fixed (`SEED = 42`). GPU non-determinism can change numbers in the third decimal.
 
 Tested versions are pinned in `requirements.txt`.
